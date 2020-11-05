@@ -30,19 +30,19 @@ public class Phone {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Telefon1 típusa: ");
-        String type1=scanner.nextLine();
+        String type1 = scanner.nextLine();
         System.out.println("Telefon1 memória mérete: ");
         int mem1 = scanner.nextInt();
         scanner.nextLine();
-        Phone phone1 = new Phone(type1,mem1);
+        Phone phone1 = new Phone(type1, mem1);
         System.out.println("Telefon2 típusa: ");
-        String type2=scanner.nextLine();
+        String type2 = scanner.nextLine();
         System.out.println("Telefon2 memória mérete: ");
         int mem2 = scanner.nextInt();
         scanner.nextLine();
-        Phone phone2 = new Phone(type2,mem2);
+        Phone phone2 = new Phone(type2, mem2);
 
-        System.out.println("Első telefon típusa: "+phone1.type+" ,memória mérete: "+phone1.mem);
-        System.out.println("Második telefon típusa: "+phone2.type+" ,memória mérete: "+phone2.mem);
+        System.out.println("Első telefon típusa: " + phone1.type + " ,memória mérete: " + phone1.mem);
+        System.out.println("Második telefon típusa: " + phone2.type + " ,memória mérete: " + phone2.mem);
     }
 }
