@@ -36,7 +36,7 @@ public class Position {
 
         for (int i =0; i<positionList.size();i++){
             if (positionList.get(i).getBonus()>150000){
-                System.out.println(positionList.get(i).toString());
+                System.out.println(positionList.get(i));
             }
         }
 
