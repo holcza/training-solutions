@@ -31,8 +31,8 @@ public class Position {
     public static void main(String[] args) {
         List<Position> positionList = new ArrayList<>();
 
-        positionList.add(new Position("Kiss János",10000));
-        positionList.add(new Position("Nagy Béla", 200000));
+        positionList.add(new Position("Manager",10000));
+        positionList.add(new Position("CEO", 200000));
 
         for (int i =0; i<positionList.size();i++){
             if (positionList.get(i).getBonus()>150000){
