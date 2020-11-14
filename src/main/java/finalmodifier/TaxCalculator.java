@@ -4,13 +4,13 @@ public class TaxCalculator {
 
     public final static double TAX = 0.27;
 
-    public double tax (double price){
-        return price*TAX;
+    public double tax(double price) {
+        return price * TAX;
     }
 
-    public double priceWithTax (double price){
+    public double priceWithTax(double price) {
 
-        return price*TAX + price;
+        return price * TAX + price;
     }
 
     public static void main(String[] args) {

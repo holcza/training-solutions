@@ -13,6 +13,6 @@ public class CylinderCalculator {
 
         CircleCalculator circleCalculator = new CircleCalculator();
 
-        return circleCalculator.calculatePerimeter(r)*(h+r);
+        return circleCalculator.calculatePerimeter(r) * (h + r);
     }
 }

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PhoneParserTest {
 
     @Test
-    void parseTest(){
+    void parseTest() {
 
         PhoneParser phoneParser = new PhoneParser();
 
