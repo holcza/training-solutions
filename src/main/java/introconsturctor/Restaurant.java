@@ -43,7 +43,7 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return name +": férőhely " + capacity +
+        return name + ": férőhely " + capacity +
                 "fő, menu " + menu.toString();
     }
 }
