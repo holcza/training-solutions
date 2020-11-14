@@ -28,5 +28,6 @@ public class Game {
 
         String winner = warrior1.isAlive() ? warrior1.toString() : warrior2.toString();
         System.out.println("Winner: " + winner);
+        System.out.println(warrior1 instanceof Warrior);
     }
 }
