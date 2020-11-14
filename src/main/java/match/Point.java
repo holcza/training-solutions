@@ -18,8 +18,8 @@ public class Point {
         return y;
     }
 
-    public double distance (Point other){
+    public double distance(Point other) {
 
-        return Math.max(Math.abs(other.getX()-x),Math.abs(other.getY()-y));
+        return Math.max(Math.abs(other.getX() - x), Math.abs(other.getY() - y));
     }
 }
