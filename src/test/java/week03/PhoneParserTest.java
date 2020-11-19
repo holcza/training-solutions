@@ -1,4 +1,4 @@
-package week03.enaplo;
+package week03;
 
 import org.junit.jupiter.api.Test;
 import week03.Phone;
