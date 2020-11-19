@@ -47,6 +47,7 @@ public class SchoolRecordsController {
             switch (menuPoint) {
                 case 1:
                     classRecords.listStudentNames();
+
                     break;
                 case 2:
                     System.out.println("Kit keresel?");
