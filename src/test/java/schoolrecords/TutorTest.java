@@ -1,6 +1,8 @@
-package week03.enaplo;
+package schoolrecords;
 
 import org.junit.jupiter.api.Test;
+import schoolrecords.Subject;
+import schoolrecords.Tutor;
 
 import java.util.Arrays;
 

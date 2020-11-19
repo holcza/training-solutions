@@ -1,4 +1,4 @@
-package week03.enaplo;
+package schoolrecords;
 
 public class StudyResultByName {
 

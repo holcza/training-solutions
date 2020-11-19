@@ -1,4 +1,4 @@
-package week03.enaplo;
+package schoolrecords;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,11 @@ public class Tutor {
         return name;
     }
 
-    public boolean tutorTeachingSubject (Subject subject){
+    public boolean tutorTeachingSubject(Subject subject) {
         boolean isTeaching = false;
-        for (int i=0;i<taughtSubjects.size();i++){
-            if (subject.getSubjectName()==taughtSubjects.get(i).getSubjectName()){
-                isTeaching=true;
+        for (int i = 0; i < taughtSubjects.size(); i++) {
+            if (subject.getSubjectName() == taughtSubjects.get(i).getSubjectName()) {
+                isTeaching = true;
             }
         }
         return isTeaching;
