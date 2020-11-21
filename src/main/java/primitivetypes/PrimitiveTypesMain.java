@@ -6,7 +6,7 @@ public class PrimitiveTypesMain {
 
         PrimitiveTypes primitiveTypes = new PrimitiveTypes();
 
-        int number = 11;
+        int number = -11;
 
         System.out.println(primitiveTypes.toBinaryString(number));
         System.out.println(Integer.toBinaryString(number));
