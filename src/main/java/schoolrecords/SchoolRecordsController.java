@@ -1,9 +1,6 @@
 package schoolrecords;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class SchoolRecordsController {
 
@@ -12,6 +9,7 @@ public class SchoolRecordsController {
     List<Tutor> tutors = new ArrayList<>();
 
     public void initSchool() {
+        classRecords= new ClassRecords("1A",new Random());
         subjects.add(new Subject("matematika"));
         subjects.add(new Subject("fizika"));
         subjects.add(new Subject("kémia"));
@@ -46,8 +44,11 @@ public class SchoolRecordsController {
 
             switch (menuPoint) {
                 case 1:
-                    classRecords.listStudentNames();
-
+                    try {
+                        System.out.println(classRecords.listStudentNames());
+                    }catch (NullPointerException npe){
+                        System.out.println(npe.getMessage());
+                    }
                     break;
                 case 2:
                     System.out.println("Kit keresel?");

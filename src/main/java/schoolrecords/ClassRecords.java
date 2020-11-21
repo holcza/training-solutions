@@ -126,6 +126,9 @@ public class ClassRecords {
     }
 
     public String listStudentNames() {
+        if (students.size()==0){
+            throw new NullPointerException("There is no student to list");
+        }
         String nameList = "";
         for (Student st : students) {
             nameList += st.getName() + ", ";
@@ -135,6 +138,9 @@ public class ClassRecords {
     }
 
     public List<StudyResultByName> listStudyResults() {
+        if (students==null){
+            throw new NullPointerException("There is no student to list");
+        }
         List<StudyResultByName> listResult = new ArrayList<>();
         for (Student st : students) {
             listResult.add(new StudyResultByName(st.getName(), st.calculateAverage()));
