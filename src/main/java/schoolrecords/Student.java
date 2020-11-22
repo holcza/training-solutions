@@ -21,9 +21,9 @@ public class Student {
 
     @Override
     public String toString() {
-        String returnString = "";
+        String returnString = name;
         for (int i = 0; i < marks.size(); i++) {
-            returnString += name + " marks: " + marks.get(i).getSubject().getSubjectName() + ": " + marks.get(i).toString();
+            returnString += " marks: " + marks.get(i).getSubject().getSubjectName() + ": " + marks.get(i).toString();
         }
         return returnString;
     }
@@ -41,13 +41,11 @@ public class Student {
     }
 
     public double calculateSubjectAverage(Subject subject) {
-        if (subject == null) {
-            throw new NullPointerException("");
-        }
+
         double average = 0;
         int toDivide = 0;
         for (int i = 0; i < marks.size(); i++) {
-            if (marks.get(i).getSubject().getSubjectName() == subject.getSubjectName()) {
+            if (marks.get(i).getSubject().getSubjectName().equals(subject.getSubjectName())) {
                 average += marks.get(i).getMarkType().getValue();
                 toDivide++;
             }

@@ -26,9 +26,7 @@ public class ClassRecords {
     }
 
     public boolean addStudent(Student student) {
-        if (student == null) {
-            throw new NullPointerException("");
-        }
+
         boolean addStudentInClass = true;
         for (Student st : students) {
             if (st.getName() == student.getName()) {
@@ -42,9 +40,7 @@ public class ClassRecords {
     }
 
     public boolean removeStudent(Student student) {
-        if (student == null) {
-            throw new NullPointerException("");
-        }
+
         boolean removeStudentInClass = false;
         for (Student st : students) {
             if (st.getName() == student.getName()) {
@@ -61,13 +57,18 @@ public class ClassRecords {
         if (students.size() == 0) {
             throw new ArithmeticException("No student in the class, average calculation aborted!");
         }
-        double average = 0;
+        double average = 0.0;
         int numberToDivideBy = students.size();
         for (Student st : students) {
             if (st.marks.size() == 0) {
-                throw new ArithmeticException("No marks present, average calculation aborted!");
+                numberToDivideBy--;
+            } else {
+
+                average += st.calculateAverage();
             }
-            average += st.calculateAverage();
+        }
+        if (numberToDivideBy == 0) {
+            throw new ArithmeticException("No marks present, average calculation aborted!");
         }
         average = numberToDivideBy == 0 ? 0.0 : Math.round(average / numberToDivideBy * 100) / 100.0;
         return average;
@@ -78,21 +79,23 @@ public class ClassRecords {
         if (subject == null) {
             throw new NullPointerException("");
         }
-        if (students == null) {
-            throw new ArithmeticException("");
+        if (students.size() == 0) {
+            throw new ArithmeticException("No student in the class, average calculation aborted!");
         }
-        double average = 0;
-        int numberToDivideBy = 0;
+        double average = 0.0;
+        int numberToDivideBy = students.size();
         for (Student st : students) {
-            if (st.marks == null) {
-                throw new ArithmeticException("");
-            }
-            double averageToAdd = st.calculateSubjectAverage(subject);
-            average += averageToAdd;
-            if (averageToAdd != 0.0) {
-                numberToDivideBy++;
-            }
 
+            double averageToAdd = st.calculateSubjectAverage(subject);
+            if (averageToAdd==0.0) {
+                numberToDivideBy--;
+            }
+            average += averageToAdd;
+
+
+        }
+        if (numberToDivideBy == 0) {
+            throw new ArithmeticException("No marks present, average calculation aborted!");
         }
         average = numberToDivideBy == 0 ? 0.0 : Math.round(average / numberToDivideBy * 100) / 100.0;
         return average;
@@ -107,14 +110,17 @@ public class ClassRecords {
         if (students.size() == 0) {
             throw new IllegalStateException("No students to search!");
         }
+
         for (Student student : students) {
-            if (student.getName() == name) {
+            if (name.equals(student.getName())) {
+
                 return student;
             }
 
         }
 
         throw new IllegalArgumentException("Student by this name cannot be found! " + name);
+
     }
 
     private boolean isEmpty(String name) {
@@ -126,7 +132,7 @@ public class ClassRecords {
     }
 
     public String listStudentNames() {
-        if (students.size()==0){
+        if (students.size() == 0) {
             throw new NullPointerException("There is no student to list");
         }
         String nameList = "";
@@ -138,7 +144,7 @@ public class ClassRecords {
     }
 
     public List<StudyResultByName> listStudyResults() {
-        if (students==null){
+        if (students.size() == 0) {
             throw new NullPointerException("There is no student to list");
         }
         List<StudyResultByName> listResult = new ArrayList<>();
