@@ -2,9 +2,14 @@ package week06d01;
 
 
 public class SeparatedSum {
+
+    public static final String NUMBER_SEPARATOR = ";";
+    public static final char SOURCE_SIGN = ',';
+    public static final char TARGET_SIGN = '.';
+
     public SumResult sum(String s) {
-        String sModified = s.replace(',', '.');
-        String[] parts = sModified.split(";");
+        String sModified = s.replace(SOURCE_SIGN, TARGET_SIGN);
+        String[] parts = sModified.split(NUMBER_SEPARATOR);
         double positive = 0;
         double negative = 0;
 
