@@ -26,7 +26,7 @@ public class CountryStatistics {
     }
 
     public List<Country> getCountryList() {
-        return countryList;
+        return new ArrayList<>(countryList);
     }
 
     public Country createCountry (String s){
