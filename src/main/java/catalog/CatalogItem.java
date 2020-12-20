@@ -5,7 +5,7 @@ import week06d02.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CatalogItem{
+public class CatalogItem {
 
     private String registrationNumber;
     private int price;
@@ -15,6 +15,15 @@ public class CatalogItem{
         this.registrationNumber = registrationNumber;
         this.price = price;
         this.features = features;
+    }
+
+    public CatalogItem(String registrationNumber, int price, Feature... feature) {
+        this.registrationNumber = registrationNumber;
+        this.price = price;
+        for (Feature f: feature){
+
+            features.add(f);
+        }
     }
 
     public String getRegistrationNumber() {
@@ -31,54 +40,54 @@ public class CatalogItem{
 
     public List<String> getContributors() {
         List<String> cotributors = new ArrayList<>();
-        for (Feature f: features){
+        for (Feature f : features) {
             cotributors.addAll(f.getContributors());
         }
         return cotributors;
     }
 
-    public List<String> getTitle() {
+    public List<String> getTitles() {
         List<String> titles = new ArrayList<>();
-        for (Feature f: features){
-            titles.addAll(f.getContributors());
+        for (Feature f : features) {
+            titles.add(f.getTitle());
         }
         return titles;
     }
 
-    public boolean hasAudioFeature(){
+    public boolean hasAudioFeature() {
         boolean hasAudioFeauture = false;
-        for (Feature f: features){
-            if (f instanceof AudioFeatures){
-             hasAudioFeauture = true;
+        for (Feature f : features) {
+            if (f instanceof AudioFeatures) {
+                hasAudioFeauture = true;
             }
         }
         return hasAudioFeauture;
     }
 
-    public boolean hasPrintedFeature(){
+    public boolean hasPrintedFeature() {
         boolean hasPrintedFeauture = false;
-        for (Feature f: features){
-            if (f instanceof PrintedFeatures){
+        for (Feature f : features) {
+            if (f instanceof PrintedFeatures) {
                 hasPrintedFeauture = true;
             }
         }
         return hasPrintedFeauture;
     }
 
-    public int fullLenghtAtOne(){
+    public int fullLengthAtOneItem() {
         int sum = 0;
-        for (Feature f:features){
-            if (f instanceof AudioFeatures){
+        for (Feature f : features) {
+            if (f instanceof AudioFeatures) {
                 sum += ((AudioFeatures) f).getLength();
             }
         }
         return sum;
     }
 
-    public int numberOfPagesAtOne(){
+    public int numberOfPagesAtOneItem() {
         int sum = 0;
-        for (Feature f:features){
-            if (f instanceof PrintedFeatures){
+        for (Feature f : features) {
+            if (f instanceof PrintedFeatures) {
                 sum += ((PrintedFeatures) f).getNumberOfPages();
             }
         }
