@@ -5,7 +5,7 @@ public class Account {
     private double balance;
     private double maxSubstract;
 
-    public Account(String accountNumber, double balance) {
+    public Account(String accountNumber, double balance) throws IllegalArgumentException{
         if (accountNumber==null||accountNumber.isBlank()){
             throw new IllegalArgumentException();
         }
@@ -26,7 +26,7 @@ public class Account {
         return maxSubstract;
     }
 
-    public void setMaxSubtract(double maxSubstract) {
+    public void setMaxSubtract(double maxSubstract) throws InvalidBankOperationException {
         if (-maxSubstract<=balance) {
             this.maxSubstract = maxSubstract;
         } else {
@@ -34,7 +34,7 @@ public class Account {
         }
     }
 
-    public double deposit (double amount){
+    public double deposit (double amount) throws InvalidBankOperationException{
         if(amount<0){
             throw new InvalidBankOperationException("",ErrorCode.INVALID_AMOUNT);
         }
@@ -42,7 +42,7 @@ public class Account {
         return balance;
     }
 
-    public double subtract(double amount){
+    public double subtract(double amount) throws InvalidBankOperationException{
         if (amount<=maxSubstract&&amount>0) {
             if (balance>=amount) {
                 balance -= amount;
