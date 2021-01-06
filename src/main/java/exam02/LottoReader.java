@@ -13,7 +13,7 @@ public class LottoReader {
     public LottoReader(InputStream inputStream) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
-            while ((line=br.readLine())!=null){
+            while ((line = br.readLine()) != null) {
                 Integer[] numbers = new Integer[5];
                 numbers = readNumbers(line);
                 addToNumberOfNumbers(numbers);
@@ -23,26 +23,26 @@ public class LottoReader {
         }
     }
 
-    private Integer[] readNumbers (String s){
+    private Integer[] readNumbers(String s) {
         Integer[] numbers = new Integer[5];
         String[] sList;
-        sList=s.split(";");
+        sList = s.split(";");
 
-        for(int i = 11;i<16;i++){
-            numbers[i-11]=Integer.parseInt(sList[i]);
+        for (int i = 11; i < 16; i++) {
+            numbers[i - 11] = Integer.parseInt(sList[i]);
         }
 
         return numbers;
 
     }
 
-    private void addToNumberOfNumbers(Integer[] numbers){
-        for(int n:numbers){
-            numberOfNumbers[n-1]++;
+    private void addToNumberOfNumbers(Integer[] numbers) {
+        for (int n : numbers) {
+            numberOfNumbers[n - 1]++;
         }
     }
 
-    public int getNumber(int index){
+    public int getNumber(int index) {
         return numberOfNumbers[index];
     }
 }
