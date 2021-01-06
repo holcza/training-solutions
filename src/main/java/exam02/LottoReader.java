@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoReader {
-    private Integer[] numberOfNumbers = new Integer[90];
+    private int[] numberOfNumbers = new int[90];
 
     public LottoReader(InputStream inputStream) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = br.readLine()) != null) {
-                Integer[] numbers = new Integer[5];
+                int[] numbers = new int[5];
                 numbers = readNumbers(line);
                 addToNumberOfNumbers(numbers);
             }
@@ -23,8 +23,8 @@ public class LottoReader {
         }
     }
 
-    private Integer[] readNumbers(String s) {
-        Integer[] numbers = new Integer[5];
+    private int[] readNumbers(String s) {
+        int[] numbers = new int[5];
         String[] sList;
         sList = s.split(";");
 
@@ -36,7 +36,7 @@ public class LottoReader {
 
     }
 
-    private void addToNumberOfNumbers(Integer[] numbers) {
+    private void addToNumberOfNumbers(int[] numbers) {
         for (int n : numbers) {
             numberOfNumbers[n - 1]++;
         }
