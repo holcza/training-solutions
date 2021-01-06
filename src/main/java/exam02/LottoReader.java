@@ -42,7 +42,7 @@ public class LottoReader {
         }
     }
 
-    public int getNumber(int index) {
-        return numberOfNumbers[index];
+    public int getNumber(int number) {
+        return numberOfNumbers[number - 1];
     }
 }
