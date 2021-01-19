@@ -1,4 +1,4 @@
-package week11d02;
+package week11d03;
 
 public class CharCounter {
     public int countChars(String[] chars){
