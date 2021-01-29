@@ -14,10 +14,10 @@ public class CitiesReader {
     private List<City> cityList = new ArrayList<>();
 
     public void findFirstCityFromFile (InputStream is) throws IOException{
-        List<City> cityList = new ArrayList<>();
+
         readFromFile(is);
         cityList.sort(new NameCompare());
-        System.out.println(cityList);
+
         if (cityList ==null){
             throw new IllegalArgumentException("There is no city");
         }
@@ -47,8 +47,8 @@ public class CitiesReader {
         reader.readLine();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         CitiesReader cr = new CitiesReader();
-        cr.readFromFile(CitiesReader.class.getResourceAsStream("cities.csv"));
+        cr.findFirstCityFromFile(CitiesReader.class.getResourceAsStream("cities.csv"));
     }
 }
