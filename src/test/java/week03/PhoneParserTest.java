@@ -1,8 +1,7 @@
 package week03;
 
 import org.junit.jupiter.api.Test;
-import week03.Phone;
-import week03.PhoneParser;
+import week03d04.PhoneParser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,7 +1,5 @@
 package exam02.photo;
 
-import week03.Phone;
-
 import java.util.ArrayList;
 import java.util.List;
 
