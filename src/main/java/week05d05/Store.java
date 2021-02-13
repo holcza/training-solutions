@@ -1,4 +1,6 @@
-package week05;
+package week05d05;
+
+import week05d05.Product;
 
 import java.util.ArrayList;
 import java.util.List;

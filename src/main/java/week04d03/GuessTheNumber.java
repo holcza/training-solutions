@@ -1,4 +1,4 @@
-package week04;
+package week04d03;
 
 import javax.security.sasl.SaslClient;
 import java.util.Random;

@@ -1,12 +1,8 @@
 package week08d05;
 
 
-import week05.week05d05.PlayList;
-
 import java.io.FileInputStream;
 import java.io.IOException;
-
-import java.nio.file.Path;
 
 public class Plane {
 

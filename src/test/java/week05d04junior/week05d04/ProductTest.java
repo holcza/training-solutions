@@ -1,6 +1,7 @@
-package week05.week05d04;
+package week05d04junior.week05d04;
 
 import org.junit.jupiter.api.Test;
+import week05d04.Product;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

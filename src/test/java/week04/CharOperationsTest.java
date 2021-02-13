@@ -1,6 +1,7 @@
 package week04;
 
 import org.junit.jupiter.api.Test;
+import week04d02.Search;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class CharOperationsTest {
 
     @Test
     public void getPositionOfCharTest() {
-        CharOperations charOperations = new CharOperations();
+        Search charOperations = new Search();
 
         assertEquals(List.of(0, 3), charOperations.getPositionOfChar("alma", "a"));
     }

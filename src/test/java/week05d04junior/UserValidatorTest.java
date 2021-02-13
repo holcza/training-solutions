@@ -1,6 +1,8 @@
-package week05;
+package week05d04junior;
 
 import org.junit.jupiter.api.Test;
+import week05d03.User;
+import week05d03.UserValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

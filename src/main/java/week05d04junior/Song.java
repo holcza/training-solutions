@@ -1,4 +1,4 @@
-package week05.week05d05;
+package week05d04junior;
 
 public class Song {
     private String name;
