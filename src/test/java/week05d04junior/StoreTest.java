@@ -23,7 +23,7 @@ public class StoreTest {
 
 
 
-        assertEquals(1,store.productList.size());
+        assertEquals(1,store.getProductList().size());
         assertEquals(0,store.getNumberOfExpired());
     }
 }
