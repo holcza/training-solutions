@@ -1,16 +1,21 @@
 package activityTracker;
 
 import org.flywaydb.core.Flyway;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mariadb.jdbc.MariaDbDataSource;
 
-import java.sql.*;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityTrackerMain {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public static void main(String[] args) {
+public class ActivityDaoTest {
+    ActivityDao  activityDao;
+
+    @BeforeEach
+    public void init(){
         MariaDbDataSource dataSource;
         try {
             dataSource = new MariaDbDataSource();
@@ -27,10 +32,18 @@ public class ActivityTrackerMain {
         flyway.clean();
         flyway.migrate();
 
-        ActivityDao activityDao = new ActivityDao(dataSource);
-        activityDao.saveActivity(
-                new Activity(LocalDateTime.of(2000,4,6,3,6),"bbb",ActivityType.BIKING));
-        System.out.println(activityDao.findActivityById(1));
-        System.out.println(activityDao.listActivities());
+        activityDao = new ActivityDao(dataSource);
+    }
+
+    @Test
+    public void findActivityByIdTest(){
+        Activity activity =activityDao.findActivityById(1);
+        assertEquals(activity.getDesc(),"aaa");
+    }
+
+    @Test
+    public void listActivities(){
+        List<Activity> activities = activityDao.listActivities();
+        assertEquals(activities.get(1).getDesc(),"bbb");
     }
 }
