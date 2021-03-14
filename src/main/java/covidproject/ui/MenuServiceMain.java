@@ -175,7 +175,7 @@ public class MenuServiceMain {
         System.out.println("Please give the file name to save the report in: ");
         String file = scanner.nextLine();
 
-        List<Person> citizens = citizensDao.getCitizensByZip(zip);
+        List<Person> citizens = citizensDao.getCitizensToVaccinateByZip(zip);
 
         saveListOfCitizensToVaccinate(zip, file);
     }
@@ -192,7 +192,7 @@ public class MenuServiceMain {
         String path = checkPath();
         List<Person> citizens = readRegistrationFile(path);
 
-        citizensDao.insertCitizen(citizens);
+        citizensDao.insertCitizens(citizens);
 
         System.out.println("Registration completed");
     }
@@ -233,7 +233,7 @@ public class MenuServiceMain {
         List<Person> citizens = new ArrayList<>();
         citizens.add(new Person(name, zip, age, email, taj));
 
-        citizensDao.insertCitizen(citizens);
+        citizensDao.insertCitizens(citizens);
 
         System.out.println("Registration completed");
 

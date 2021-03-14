@@ -6,8 +6,6 @@ import org.mariadb.jdbc.MariaDbDataSource;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +58,7 @@ public class FileHandler {
     }
 
     public static void writeLines(String zip, BufferedWriter writer, MariaDbDataSource dataSource) {
-        List<Person> citizens = new CitizensDao(dataSource).getCitizensByZip(zip);
+        List<Person> citizens = new CitizensDao(dataSource).getCitizensToVaccinateByZip(zip);
         int count = 0;
         LocalTime time = LocalTime.of(8, 0);
         try {

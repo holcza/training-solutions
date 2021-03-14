@@ -19,7 +19,7 @@ public class CitizensDao {
         this.dataSource = dataSource;
     }
 
-    public void insertCitizen(List<Person> persons) {
+    public void insertCitizens(List<Person> persons) {
         try (
                 Connection conn = dataSource.getConnection();
         ) {
@@ -55,7 +55,7 @@ public class CitizensDao {
         }
     }
 
-    public List<Person> getCitizensByZip(String zip) {
+    public List<Person> getCitizensToVaccinateByZip(String zip) {
         try (
                 Connection conn = dataSource.getConnection();
                 PreparedStatement stmt =
@@ -65,14 +65,14 @@ public class CitizensDao {
             try (
                     ResultSet rs = stmt.executeQuery();
             ) {
-                return listCitizensByZip(zip, rs);
+                return listCitizensToVaccinateByZip(zip, rs);
             }
         } catch (SQLException se) {
             throw new IllegalStateException("Cannot select", se);
         }
     }
 
-    private List<Person> listCitizensByZip(String zip, ResultSet rs) throws SQLException {
+    private List<Person> listCitizensToVaccinateByZip(String zip, ResultSet rs) throws SQLException {
         List<Person> citizens = new ArrayList<>();
         while (rs.next()) {
             String name = rs.getString("citizen_name");
@@ -85,12 +85,12 @@ public class CitizensDao {
             if (lastVaccinationDate != null) {
                 lastVaccination = rs.getDate("last_vaccination").toLocalDate();
             }
-            filterCitizens(zip, citizens, name, age, email, taj, numberOfVaccination, lastVaccination);
+            filterCitizensToVaccinate(zip, citizens, name, age, email, taj, numberOfVaccination, lastVaccination);
         }
         return citizens;
     }
 
-    private void filterCitizens(String zip, List<Person> citizens, String name, int age, String email, String taj, int numberOfVaccination, LocalDate lastVaccination) {
+    private void filterCitizensToVaccinate(String zip, List<Person> citizens, String name, int age, String email, String taj, int numberOfVaccination, LocalDate lastVaccination) {
         if (numberOfVaccination == 0 || (numberOfVaccination == 1 && Period.between(lastVaccination, LocalDate.now()).getDays() >= 15)) {
             Person person = new Person(name, zip, age, email, taj);
             citizens.add(person);
