@@ -42,19 +42,23 @@ public class PersonValidator {
 
     public static void tajCheck(String taj) {
         if (taj.length() == 9) {
-            int sum = 0;
-            for (int i = 0; i < 8; i++) {
-                if (i % 2 == 0) {
-                    sum += Integer.parseInt(String.valueOf(taj.charAt(i))) * 3;
-                } else {
-                    sum += Integer.parseInt(String.valueOf(taj.charAt(i))) * 7;
-                }
-            }
-            if (sum % 10 != Integer.parseInt(String.valueOf(taj.charAt(8)))) {
-                throw new IllegalArgumentException("Not valid taj number");
-            }
+            checkTajCalculation(taj);
         } else {
             throw new IllegalArgumentException("Not correct length of taj number");
+        }
+    }
+
+    private static void checkTajCalculation(String taj) {
+        int sum = 0;
+        for (int i = 0; i < 8; i++) {
+            if (i % 2 == 0) {
+                sum += Integer.parseInt(String.valueOf(taj.charAt(i))) * 3;
+            } else {
+                sum += Integer.parseInt(String.valueOf(taj.charAt(i))) * 7;
+            }
+        }
+        if (sum % 10 != Integer.parseInt(String.valueOf(taj.charAt(8)))) {
+            throw new IllegalArgumentException("Not valid taj number");
         }
     }
 

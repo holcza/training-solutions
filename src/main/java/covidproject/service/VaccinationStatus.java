@@ -28,12 +28,4 @@ public class VaccinationStatus {
         return lastDate;
     }
 
-    @Override
-    public String toString() {
-        return "VaccinationStatus{" +
-                "citizen_id=" + citizen_id +
-                ", numberOfVaccination=" + numberOfVaccination +
-                ", lastTime=" + lastDate +
-                '}';
-    }
 }

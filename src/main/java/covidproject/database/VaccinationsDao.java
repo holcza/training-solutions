@@ -40,17 +40,21 @@ public class VaccinationsDao {
         ) {
             stmt.setInt(1, id);
 
-            try (
-                    ResultSet rs = stmt.executeQuery();
-            ) {
-                if (rs.next()) {
-                    Brand brand = Brand.valueOf(rs.getString("vaccination_type"));
-                    return brand;
-                }
-                throw new IllegalArgumentException("No result");
-            }
+            return getBrand(stmt);
         } catch (SQLException sqle) {
             throw new IllegalArgumentException("Error by select", sqle);
+        }
+    }
+
+    private Brand getBrand(PreparedStatement stmt) throws SQLException {
+        try (
+                ResultSet rs = stmt.executeQuery();
+        ) {
+            if (rs.next()) {
+                Brand brand = Brand.valueOf(rs.getString("vaccination_type"));
+                return brand;
+            }
+            throw new IllegalArgumentException("No result");
         }
     }
 }
