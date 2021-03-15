@@ -20,7 +20,7 @@ class FileHandlerTest {
 
 
     @Test
-    void readLines() throws IOException, SQLException {
+    void readLinesTest() throws IOException, SQLException {
         MariaDbDataSource dataSource;
 
         dataSource = new MariaDbDataSource();
@@ -34,7 +34,7 @@ class FileHandlerTest {
     }
 
     @Test
-    void writeLines() throws IOException, SQLException {
+    void writeLinesTest() throws IOException, SQLException {
         MariaDbDataSource dataSource;
 
         dataSource = new MariaDbDataSource();

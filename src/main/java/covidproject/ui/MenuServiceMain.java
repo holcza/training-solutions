@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MenuServiceMain {
@@ -70,6 +71,7 @@ public class MenuServiceMain {
                         saveVaccinationNotGiven();
                         break;
                     case "6":
+                        getReportbyZipAndNumberOfVaccination();
                         break;
                     default:
                         throw new IllegalArgumentException("Not valid seleciton");
@@ -78,6 +80,17 @@ public class MenuServiceMain {
                 System.out.println(e);
             }
         } while (true);
+    }
+
+    private void getReportbyZipAndNumberOfVaccination() {
+        Map<String, Map<Integer, Integer>> reportbyZipAndNumberOfVaccination =
+                citizensDao.mapCitizensbyZipWithNumberOfVaccination();
+        for (String k : reportbyZipAndNumberOfVaccination.keySet()) {
+            Map<Integer, Integer> reportByNumberOfVaccination =
+                    reportbyZipAndNumberOfVaccination.get(k);
+            System.out.println(k + " - " + reportByNumberOfVaccination.get(0) + " - " + reportByNumberOfVaccination.get(1)
+                    + " - " + reportByNumberOfVaccination.get(2));
+        }
     }
 
     private void showMenu() {

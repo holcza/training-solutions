@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonValidatorTest {
 
     @Test
-    void emptyCheck() {
+    void emptyCheckTest() {
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> PersonValidator.emptyCheck(""));
@@ -25,7 +25,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void zipCheckUnvalid() {
+    void zipCheckUnvalidTest() {
         MariaDbDataSource dataSource;
 
         try {
@@ -44,7 +44,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void zipCheckValid() {
+    void zipCheckValidTest() {
         MariaDbDataSource dataSource;
 
         try {
@@ -59,7 +59,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void ageCheckJought() {
+    void ageCheckJoughtTest() {
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> PersonValidator.ageCheck(9));
@@ -67,7 +67,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void ageCheckOld() {
+    void ageCheckOldTest() {
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> PersonValidator.ageCheck(151));
@@ -75,7 +75,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void emailCheckMissingLetter() {
+    void emailCheckMissingLetterTest() {
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> PersonValidator.emailCheck("fgkdlsefs.hu"));
@@ -83,7 +83,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void emailCheckShort() {
+    void emailCheckShortTest() {
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> PersonValidator.emailCheck("f@"));
@@ -91,7 +91,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void sameEmailCheck() {
+    void sameEmailCheckTest() {
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> PersonValidator.sameEmailCheck("f@f", "g@f"));
@@ -99,7 +99,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void tajCheckLong() {
+    void tajCheckLongTest() {
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> PersonValidator.tajCheck("1234567899"));
@@ -107,7 +107,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void tajCheckNotValid() {
+    void tajCheckNotValidTest() {
         IllegalArgumentException thrown = assertThrows(
                 IllegalArgumentException.class,
                 () -> PersonValidator.tajCheck("123456789"));

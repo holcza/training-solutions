@@ -9,7 +9,9 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CitizensDao {
 
@@ -145,6 +147,39 @@ public class CitizensDao {
             stmt.executeUpdate();
         } catch (SQLException se) {
             throw new IllegalStateException("Cannot insert", se);
+        }
+    }
+
+    public Map<String, Map<Integer, Integer>> mapCitizensbyZipWithNumberOfVaccination() {
+        Map<String, Map<Integer, Integer>> citizensbyZip = new HashMap<>();
+
+        try (
+                Connection conn = dataSource.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("select taj,zip,number_of_vaccination from citizens")
+        ) {
+
+            while (rs.next()) {
+                processOneLineOfResult(citizensbyZip, rs);
+            }
+            return citizensbyZip;
+        } catch (SQLException se) {
+            throw new IllegalStateException("Cannot select", se);
+        }
+    }
+
+    private void processOneLineOfResult(Map<String, Map<Integer, Integer>> citizensbyZip, ResultSet rs) throws SQLException {
+        String zip = rs.getString("zip");
+        int numberOfVaccination = rs.getInt("number_of_vaccination");
+        if (citizensbyZip.containsKey(zip)) {
+            citizensbyZip.get(zip).put(numberOfVaccination, citizensbyZip.get(zip).get(numberOfVaccination) + 1);
+        } else {
+            Map<Integer, Integer> numberOfVaccinations = new HashMap<>();
+            numberOfVaccinations.put(0, 0);
+            numberOfVaccinations.put(1, 0);
+            numberOfVaccinations.put(2, 0);
+            numberOfVaccinations.put(numberOfVaccination, numberOfVaccinations.get(numberOfVaccination) + 1);
+            citizensbyZip.put(zip, numberOfVaccinations);
         }
     }
 }

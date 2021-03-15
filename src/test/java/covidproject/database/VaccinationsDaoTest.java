@@ -37,7 +37,7 @@ class VaccinationsDaoTest {
     }
 
     @Test
-    void insertVaccination() {
+    void insertVaccinationTest() {
         Vaccination vaccination = new Vaccination(1, LocalDate.of(2021, 3, 4), Status.FIRST, Brand.SZPUTNYIK);
         vaccinationsDao.insertVaccination(vaccination);
 

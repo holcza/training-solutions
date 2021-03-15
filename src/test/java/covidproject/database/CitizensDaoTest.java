@@ -10,8 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.mariadb.jdbc.MariaDbDataSource;
 
 import java.sql.SQLException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,7 +42,7 @@ class CitizensDaoTest {
     }
 
     @Test
-    void insertCitizensInvalid() throws SQLException {
+    void insertCitizensInvalidTest() throws SQLException {
         List<Person> citizens = List.of(new Person("John Doe", "2000", 40, "f@g", "123456788")
                 , new Person("Jane Doe", "2000", 41, "f@h", "123456795"));
 
@@ -57,7 +60,7 @@ class CitizensDaoTest {
     }
 
     @Test
-    void insertCitizensValid() throws SQLException {
+    void insertCitizensValidTest() throws SQLException {
         List<Person> citizens = List.of(new Person("John Doe", "2000", 40, "f@g", "123456771")
                 , new Person("Jane Doe", "2000", 41, "f@h", "123456795"));
         citizensDao.insertCitizens(citizens);
@@ -66,7 +69,7 @@ class CitizensDaoTest {
     }
 
     @Test
-    void getCitizensToVaccinateByZip() {
+    void getCitizensToVaccinateByZipTest() {
         List<Person> citizens = citizensDao.getCitizensToVaccinateByZip("2000");
 
         assertEquals(citizens.get(0).getName(), "Jane Doe");
@@ -74,10 +77,18 @@ class CitizensDaoTest {
 
 
     @Test
-    void updateVaccinationStatus() throws SQLException {
+    void updateVaccinationStatusTest() throws SQLException {
         VaccinationStatus vaccinationStatus = new VaccinationStatus(1, 2, LocalDate.of(2021, 3, 4));
         citizensDao.updateVaccinationStatus(vaccinationStatus);
         VaccinationStatus vaccinationStatusUpdated = citizensDao.getVaccinationStatusByTaj("123456788");
         assertEquals(vaccinationStatusUpdated.getNumberOfVaccination(), 2);
+    }
+
+    @Test
+    void mapCitizensbyZipWithNumberOfVaccinationTest() {
+        Map<String, Map<Integer, Integer>> citizensByZipWithNumberOfVaccination =
+                citizensDao.mapCitizensbyZipWithNumberOfVaccination();
+
+        assertEquals(citizensByZipWithNumberOfVaccination.get("2000").get(0), 2);
     }
 }

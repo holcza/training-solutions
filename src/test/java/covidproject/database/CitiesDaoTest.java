@@ -34,7 +34,7 @@ class CitiesDaoTest {
     }
 
     @Test
-    void listCityNames() {
+    void listCityNamesTest() {
         assertEquals(citiesDao.listCityNames("2000"), List.of("Szentendre"));
     }
 }
