@@ -94,7 +94,7 @@ public class MenuServiceMain {
         System.out.println("Please give the reason why vaccination can not be given");
         String note = scanner.nextLine();
         LocalDate date = getNewLastDate();
-        vaccinationsDao.insertVaccination(new Vaccination(citizenID,date,Status.NONE,note));
+        vaccinationsDao.insertVaccination(new Vaccination(citizenID, date, Status.NONE, note));
         System.out.println("Thank you. Note is registered.");
     }
 
@@ -146,9 +146,9 @@ public class MenuServiceMain {
         return vaccinationStatus;
     }
 
-    private void updateVaccinationStatus(int citizenID,int numberOfVaccination,LocalDate date) {
+    private void updateVaccinationStatus(int citizenID, int numberOfVaccination, LocalDate date) {
 
-        citizensDao.updateVaccinationStatus(new VaccinationStatus(citizenID,numberOfVaccination,date));
+        citizensDao.updateVaccinationStatus(new VaccinationStatus(citizenID, numberOfVaccination, date));
         System.out.println("Thank you. It was registered.");
 
     }
@@ -163,14 +163,14 @@ public class MenuServiceMain {
         System.out.println("Please give the day: ");
         int day = scanner.nextInt();
         scanner.nextLine();
-        LocalDate date = LocalDate.of(year,month,day);
+        LocalDate date = LocalDate.of(year, month, day);
         return date;
     }
 
     private void generateListOfCitizensToVaccinate() {
         System.out.println("Please give the zip number: ");
         String zip = scanner.nextLine();
-        PersonValidator.zipCheck(zip,dataSource);
+        PersonValidator.zipCheck(zip, dataSource);
 
         System.out.println("Please give the file name to save the report in: ");
         String file = scanner.nextLine();
@@ -239,14 +239,14 @@ public class MenuServiceMain {
 
     }
 
-    private String getNameInput(){
+    private String getNameInput() {
         System.out.println("Please give me your full name: ");
         String name = scanner.nextLine();
         PersonValidator.emptyCheck(name);
         return name;
     }
 
-    private String getZipInput(){
+    private String getZipInput() {
         System.out.println("Please give me your zip number: ");
         String zip = scanner.nextLine();
         PersonValidator.emptyCheck(zip);
@@ -255,7 +255,7 @@ public class MenuServiceMain {
         return zip;
     }
 
-    private int getAgeInput(){
+    private int getAgeInput() {
         System.out.println("Please give me your age: ");
         int age = scanner.nextInt();
         scanner.nextLine();
@@ -263,7 +263,7 @@ public class MenuServiceMain {
         return age;
     }
 
-    private String getEmailInput(){
+    private String getEmailInput() {
         System.out.println("Please give me your email: ");
         String email1 = scanner.nextLine();
         PersonValidator.emailCheck(email1);
@@ -274,7 +274,7 @@ public class MenuServiceMain {
         return email1;
     }
 
-    private String getTajInput(){
+    private String getTajInput() {
         System.out.println("Please give me your taj number: ");
         String taj = scanner.nextLine();
         PersonValidator.tajCheck(taj);

@@ -42,12 +42,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", zip='" + zip + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", taj='" + taj + '\'' +
-                '}';
+        return name + ';' + zip + ';' + age + ';' + email + ';' + taj;
     }
 }
